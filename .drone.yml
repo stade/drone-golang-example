@@ -20,3 +20,4 @@ steps:
   commands:
   - go get
   - go test -v 
+  - echo "Hello Drone!"
