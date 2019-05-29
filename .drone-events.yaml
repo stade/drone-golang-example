@@ -1,0 +1,21 @@
+kind: pipeline
+name: default
+
+env:
+ - GOPATH=/var/cache/drone
+
+steps:
+- name: test-branch
+  image: golang
+  commands:
+   - go test -short
+  event:
+   - push
+   
+- name: test-pr
+  image: golang
+  commands:
+   - go test -v
+  event:
+   - pull_request
+   
