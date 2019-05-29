@@ -8,14 +8,16 @@ steps:
 - name: test-branch
   image: golang
   commands:
-   - go test -short
+    - go test -short
+    - echo "This is branch"
   event:
-   - push
+    - push
    
 - name: test-pr
   image: golang
   commands:
-   - go test -v
+    - go test -v
+    - echo "This is branch"
   event:
-   - pull_request
+    - pull_request
    
