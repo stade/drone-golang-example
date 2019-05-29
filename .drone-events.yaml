@@ -1,23 +1,35 @@
 kind: pipeline
-name: default
-
-env:
- - GOPATH=/var/cache/drone
+name: branch-build
 
 steps:
-- name: test-branch
+- name: test
   image: golang
   commands:
-    - go test -short
-    - echo "This is branch"
+  - go test -short
+  - echo "This is branch-build!"
+
+trigger:
   event:
+    include:
     - push
-   
+    exclude:
+    - pull_request
+
+---
+kind: pipeline
+name: pr-build
+
 - name: test-pr
   image: golang
   commands:
     - go test -v
-    - echo "This is branch"
+  - echo "This is pr-build!"
   event:
     - pull_request
    
+trigger:
+  event:
+    include:
+    - pull_request
+    exclude:
+    - push
