@@ -5,6 +5,7 @@ steps:
 - name: test
   image: golang
   commands:
+  - sleep 15
   - go test -short
   - echo "This is branch-build!"
 
@@ -22,6 +23,7 @@ name: pr-build
 - name: test-pr
   image: golang
   commands:
+    - sleep 15
     - go test -v
   - echo "This is pr-build!"
   event:
