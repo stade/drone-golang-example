@@ -1,6 +1,4 @@
----
 kind: pipeline
-name: branch-build
 
 steps:
 - name: test
@@ -9,30 +7,16 @@ steps:
     - sleep 15
     - go test -short
     - echo "This is branch-build!"
-
-trigger:
-  event:
-    include:
+  when:
+    event:
       - push
-    exclude:
-      - pull_request
-
----
-kind: pipeline
-name: pr-build
-
+     
 - name: test-pr
   image: golang
   commands:
     - sleep 15
     - go test -v
     - echo "This is pr-build!"
-  event:
-    - pull_request
-   
-trigger:
-  event:
-    include:
+  when:
+    event:
       - pull_request
-    exclude:
-      - push
