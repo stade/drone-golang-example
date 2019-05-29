@@ -5,7 +5,7 @@ steps:
 - name: test
   image: redis
   commands:
-  - sleep 5
+  - sleep 60
   - redis-cli -h redis ping
   - redis-cli -h redis set FOO bar
   - redis-cli -h redis get FOO
