@@ -14,3 +14,4 @@ steps:
   - uptime
   - df -h
   - free -h
+  - sleep 3
