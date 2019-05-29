@@ -1,6 +1,22 @@
-image: go1.2
-env:
-  - GOPATH=/var/cache/drone
-script:
-  - go test -v
+#image: go1.2
+#env:
+#  - GOPATH=/var/cache/drone
+#script:
+#  - go test -v
 
+kind: pipeline
+name: default
+
+#workspace:
+#  base: /go
+#  path: src/github.com/octocat/hello-world
+
+env:
+ - GOPATH=/var/cache/drone
+
+steps:
+- name: test
+  image: golang
+  commands:
+  - go get
+  - go test -v 
