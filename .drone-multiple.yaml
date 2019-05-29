@@ -7,6 +7,7 @@ steps:
   image: golang:1.11
   commands:
   - go test -v
+  - echo "Hello Drone!"
 
 ---
 kind: pipeline
@@ -17,3 +18,4 @@ steps:
   image: golang:1.10
   commands:
   - go test -v
+  - echo "Hello again Drone!"
