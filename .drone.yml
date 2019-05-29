@@ -8,5 +8,9 @@ steps:
 - name: test
   image: golang
   commands:
+  - sleep 15
   - go test -v 
   - echo "Hello Drone!"
+  - uptime
+  - df -h
+  - free -h
